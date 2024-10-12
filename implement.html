@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <title>Table Component</title>
+  <style>
+        .labels-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end !important;
+      margin-bottom: 10px;
+    }
+    .modal-footer{
+      flex-direction: column !important;
+    }
+    .labels-row {
+      margin: 0 !important;
+    }
+    .item-row {
+      margin-top: 15px;
+    }
+    .hidden {
+      display: none;
+    }
+    .visible {
+      display: block;
+    }
+
+    /* For smaller screens */
+    @media only screen and (max-width: 768px) {
+      .labels-row { display: none; } /* Hide labels row */
+      .item-row { display: flex; flex-direction: column; }
+    }
+
+    /* Other basic styles */
+    .btn-add { background-color: #007bff; color: white; padding: 5px 10px; border: none; }
+    .btn-add img { margin-right: 5px; }
+    .statuesplus, .statuesfalse { display: flex; align-items: center; }
+    .statuesplus , .statuesfalse  { margin-left: 10px;    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none !important;
+    padding: .4rem 1rem; }
+    .names { margin-bottom: 10px; }
+  </style>
+</head>
+
+<body>
+  <img src="./assets/Tanfez_Shape.png" class="imgaya">
+
+  <div class="container themain">
+    <div class="row main-header">
+      <div class="navaya">
+        <img src="./assets/User_Img.png" class="user-img" alt="">
+        <div class="notification">
+          <img src="./assets/Notification_Icon.png" class="notification-icon" alt="">
+          <p class="notification-text">3</p>
+        </div>
+      </div>
+      <div class="navbar-text">
+        <div class="text-nav">
+          <img src="./assets/MOJ_Logo_Symbol.png" class="logo-head" alt="">
+          <p>الادارة العامة للتنفيذ</p>
+          <div class="text-head">
+            <hr>
+            <p>وزارة العدل</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mainContent" class="respons">
+      <div class="row main-content">
+        <div class="col-lg-9 col-md-12 col-sm-12 mb-3">
+          <div class="row mb-3">
+            <div class="col-6">
+              <div class="date">
+                <img src="./assets/Calendar_Icon.png" class="calendar" alt="">
+                <p>فلتر بالتاريخ</p>
+              </div>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+              <div class="text-under">
+                <p>ملفات قيد التنفيذ</p>
+                <p>ملف 39</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="search" placeholder="بحث سريع، يُرجى كتابة أي كلمة هنا…"
+                aria-describedby="button-addon1">
+              <div class="search-div">
+                <img src="./assets/Search_Icon.png" class="search-btn" alt="">
+              </div>
+            </div>
+          </div>
+
+
+
+          <div id="labelsRow" class="row labels-row">
+            <div class="col-lg-2 col-md-12 col-sm-12">الإجراء</div>
+            <div class="col-lg-1 col-md-12 col-sm-12">الايصال</div>
+            <div class="col-lg-2 col-md-12 col-sm-12">الحاله</div>
+            <div class="col-lg-3 col-md-12 col-sm-12">المدعى عليه</div>
+            <div class="col-lg-2 col-md-12 col-sm-12">المدعي</div>
+            <div class="col-lg-2 col-md-12 col-sm-12">الآلي والتاريخ</div>
+          </div>
+          
+          <div class="col" id="itemList">
+          </div>
+          
+
+
+
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12">
+          <div class="container-choose">
+            <div class="card" onclick="gotot('add')">
+              <div class="row">
+                <div class="col-2">
+                  <p class="e3lan-num color-main">39</p>
+                </div>
+                <div class="col-7">
+                  <p class="e3lan-title color-main">الإعلان</p>
+                  <p class="e3lan-desc color-main">ملفات قيد الإستلام</p>
+                </div>
+                <div class="col-2">
+                  <img src="./assets/E3lan_Icon.png" class="e3lan" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="card-choose" onclick="gotot('implement')">
+              <div class="row">
+                <div class="col-2">
+                  <p class="e3lan-num color-white">349</p>
+                </div>
+                <div class="col-7">
+                  <p class="e3lan-title color-white">التنفيذ</p>
+                  <p class="e3lan-desc color-white">ملفات قيد التنفيذ</p>
+                </div>
+                <div class="col-2">
+                  <img src="./assets/Tanfez_Icon.png" class="e3lan" alt="">
+                </div>
+              </div>
+              <div class="under-choosen "></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="footer">
+        <div class="footer-text">
+          <p>جميع الحقوق محفوظة لـ الإدارة العامة للتنفيذ © 2023</p>
+          <div class="text-inside-footer">
+            <p>في إدارة تطوير النظم - وزارة العدل</p>
+            <img src="./assets/Heart.png" class="heart" alt="">
+            <p>صُنع بـ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- First Modal -->
+  <div class="modal fade" id="firstModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="firstModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="header-title">
+          <p class="modal-title" id="staticBackdropLabel">التنفيذ</p>
+          <img src="./assets/flag.png" alt="">
+        </div>
+      </div>
+      <div class="modal-body text-center">
+        <p>يُرجى تحديد نوع الأجراء</p>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="sm-cards">
+              <div class="sm-card mt-3" id="card0">
+                <label for="flexCheckDefault">
+                  <img src="./assets/travelx2.png" alt="Travel Ban">
+                  <p>منع سفر</p>
+                </label>
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault" onchange="toggleCardState(0)">
+              </div>
+
+              <div class="sm-card mt-3" id="card1">
+                <label for="flexCheckDefault2">
+                  <img src="./assets/travelx2.png" alt="Travel Ban">
+                  <p>منع سفر</p>
+                </label>
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault2" onchange="toggleCardState(1)">
+              </div>
+
+              <div class="sm-card mt-3" id="card2">
+                <label for="flexCheckDefault3">
+                  <img src="./assets/travelx2.png" alt="Travel Ban">
+                  <p>منع سفر</p>
+                </label>
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault3" onchange="toggleCardState(2)">
+              </div>
+
+              <div class="sm-card mt-3" id="card3">
+                <label for="flexCheckDefault4">
+                  <img src="./assets/travelx2.png" alt="Travel Ban">
+                  <p>منع سفر</p>
+                </label>
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault4" onchange="toggleCardState(3)">
+              </div>
+
+              <div class="sm-card mt-3" id="card4">
+                <label for="flexCheckDefault5">
+                  <img src="./assets/travelx2.png" alt="Travel Ban">
+                  <p>منع سفر</p>
+                </label>
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault5" onchange="toggleCardState(4)">
+              </div>
+
+              <div class="sm-card mt-3" id="card5">
+                <label for="flexCheckDefault6">
+                  <img src="./assets/travelx2.png" alt="Travel Ban">
+                  <p>منع سفر</p>
+                </label>
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault6" onchange="toggleCardState(5)">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="row modal-cols">
+              <div class="insm-cols col-lg-8 col-md-6 col-sm-6 kohlyghamk-p">
+                <p>64784676</p>
+                <p>محمد خالد عبدالله</p>
+                <p>حور احمد كامل الفضلي</p>
+                <div class="statuesplus pluspop" style="border: none !important;">
+                  <p>تم دفع المبلغ</p>
+                  <img src="./assets/check-mark.png" alt="">
+                </div>
+                <p>3/9/2024</p>
+              </div>
+              <div class="insm-cols col-lg-4 col-md-6 col-sm-6 kohly-p">
+                <p>الرقم الآلي</p>
+                <p>المدعي</p>
+                <p>المدعى عليه</p>
+                <p>الحالة</p>
+                <p>التاريخ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn "  onclick="showModal('secondModal');hideModal('firstModal')">
+          تنفيذ الإجراء
+          <img src="./assets/checkmark_white.png" alt="">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ <!-- Second Modal -->
+<div class="modal  fade" id="secondModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="secondModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-500 modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header modal-header2">
+      <button type="button" class=" btn-close" (click)="hideModal('secondModal')"></button>
+
+    </div>
+    <div class="modal-body text-center">
+      <img src="./assets/copy.png" alt="">
+      <p>هل أنت متأكد من تنفيذ الأجراء؟</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn"
+      onclick="showModal('thirdModal');hideModal('secondModal')">
+        نعم، نفذ الإجراء
+        <img src="./assets/checkmark_white.png" alt="">
+
+      </button>
+
+      <button type="button" class="btn  btn-back-imp" data-bs-dismiss="modal" aria-label="Close">
+        لا، رجوع
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- third Modal -->
+<div class="modal  fade" id="thirdModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="secondModalLabel" aria-hidden="true">
+<div class="modal-dialog  modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header modal-header2">
+      <button type="button" class=" btn-close"data-bs-dismiss="modal" aria-label="Close"></button>
+
+    </div>
+    <div class="modal-body text-center success-text-modal">
+      <img src="./assets/copy.png" alt="">
+      <p class="success-text">تم تنفيذ الإجراء بنجاح</p>
+      <p>سيتم إغلاق النافذة تلقائياً بعد لحظات</p>
+    </div>
+  </div>
+</div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
